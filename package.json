@@ -1,0 +1,13 @@
+{
+  "name": "zavodmedia",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "meteor-node-stubs": "~0.2.4",
+    "reactive-var": "1.0.11",
+    "session": "1.1.7"
+  }
+}

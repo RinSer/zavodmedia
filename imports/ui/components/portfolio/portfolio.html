@@ -1,0 +1,61 @@
+<template name="portfolio">
+	<section id="portfolio_body">
+		<div id="portfolio_imgs">
+			<img src="/img/lights.jpg" alt="lights" />
+			<img src="/img/camera.jpg" alt="camera" />
+			<img src="/img/action.jpg" alt="action" />
+		</div>
+		<ul>
+			<li id="movies">КИНО</li>
+			<li id="ads">РЕКЛАМА</li>
+			<li id="tv">ТВ</li>
+			<li id="clips">КЛИПЫ</li>
+			<li id="backstages">БЭКСТЕЙДЖИ</li>
+			<li id="creative">КРЕАТИВ</li>
+			<li id="aero">АЭРОСЪЕМКА</li>
+		</ul>
+		{{#if start}}
+			{{> portfolioStart}}
+		{{else}}
+			{{> portfolioGroup}}
+		{{/if}}
+	</section>
+</template>
+
+
+<template name="portfolioStart">
+	<section>
+		{{#if Template.subscriptionsReady}}
+			<div class="col-sm-2">
+					<iframe src="{{bigVideo}}" width="560" height="360" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div class="col-sm-2">
+				{{#each svideo in smallVideos}}
+					<div class="col-sm-2">
+						<iframe src="{{svideo.url}}" width="320" height="180" frameborder="0" allowfullscreen></iframe>
+					</div>
+				{{/each}}
+			</div>
+		{{else}}
+			<h3>Loading</h3>
+		{{/if}}
+	</section>
+</template>
+
+
+<template name="portfolioGroup">
+	<section>
+		{{#if Template.subscriptionsReady}}
+			{{#each video in videos}}
+				<div class="col-sm-2">
+					<iframe src="{{video.url}}" width="560" height="360" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="col-sm-2">
+					<p>{{video.title}}</p>
+				</div>
+			{{/each}}
+		{{else}}
+			<h3>Loading</h3>
+		{{/if}}
+	</section>
+</template>

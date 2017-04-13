@@ -1,0 +1,11 @@
+<template name="mvid"> 
+	<section id="mvid">
+		{{#if Template.subscriptionsReady}}
+			<video controls="controls" > 
+				<source src="{{mainVideo}}" type="video/mp4">
+			</video>
+		{{else}}
+			<h2>Loading</h2>
+		{{/if}}
+	</section>
+</template>
