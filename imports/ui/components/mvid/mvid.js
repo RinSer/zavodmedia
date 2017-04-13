@@ -4,7 +4,7 @@ import './mvid.html';
 
 
 Template.mvid.onCreated(function() {
-	this.autorun(() => {this.subscribe('videos.main')});
+	this.autorun(() => {this.subscribe('videos.showreel')});
 });
 
 Template.mvid.helpers({

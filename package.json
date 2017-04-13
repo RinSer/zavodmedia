@@ -8,6 +8,13 @@
     "babel-runtime": "^6.20.0",
     "meteor-node-stubs": "~0.2.4",
     "reactive-var": "1.0.11",
-    "session": "1.1.7"
+    "session": "1.1.7",
+    "aldeed:simple-schema": "1.5.3",  
+    "mdg:validation-error": "0.2.0",
+    "aldeed:collection2": "2.10.0",
+    "aldeed:collection2-core": "1.2.0",
+    "aldeed:schema-deny": "1.1.0",
+    "aldeed:schema-index": "1.1.1",
+    "raix:eventemitter": "0.1.3"
   }
 }

@@ -31,24 +31,24 @@ Template.portfolioStart.onCreated(function() {
 
 Template.portfolioStart.helpers({
 	bigVideo() {
-		return Videos.findOne({group:{$ne:'main'}}).url;
+		return Videos.findOne({groups:{$ne:'showreel'}}).url;
 	},
 	smallVideos() {
-		return Videos.find({group:{$ne:'main'}},{skip:1,limit:4}).fetch();
+		return Videos.find({groups:{$ne:'showreel'}},{skip:1,limit:4}).fetch();
 	}
 });
 
-// Group portfolio body template
+// groups portfolio body template
 Template.portfolioGroup.onCreated(function() {
-	this.getGroup = () => Session.get('group');
+	this.getgroup = () => Session.get('group');
 	this.autorun(() => {
-		this.subscribe('videos.group', this.getGroup());
+		this.subscribe('videos.group', this.getgroup());
 	});
 });
 
 Template.portfolioGroup.helpers({
 	videos() {
 		let current = Session.get('group');
-		return Videos.find({group:current}).fetch();
+		return Videos.find({groups:current}).fetch();
 	}
 });
