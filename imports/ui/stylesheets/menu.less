@@ -9,7 +9,14 @@
 	-webkit-box-shadow: 0 0.25em 0.5em rgba(255, 255, 255, 0.5);
 	-moz-box-shadow: 0 0.25em 0.5em rgba(255, 255, 255, 0.5);
 	div {
-		width: 50%;
+		@media screen {
+			@media (min-width: 1420px) {
+				width: 50%;
+			}
+			@media (min-width: 1200px) and (max-width: 1419px) {
+				width: 75%;
+			}
+		}
 		margin: 0 auto;
 	}
 	img {

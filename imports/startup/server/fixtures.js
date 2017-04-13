@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { Videos } from '../../api/videos/videos.js';
 
 Meteor.startup(() => {
+  // Set the mail SMTP variable
+  process.env.MAIL_URL = "smtp://postmaster%40sandboxe25f63c8067f4f5fb093a393818f5919.mailgun.org:80141f9897f2ee0402301b30ea8d2ab3@smtp.mailgun.org:587";
   // if the Links collection is empty
   if (Videos.find().count() === 0) {
     const data = [

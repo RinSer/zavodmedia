@@ -16,7 +16,7 @@ Template.portfolio.helpers({
 
 Template.portfolio.events({
 	'click li'(event, template) {
-		event.preventDefault;
+		event.preventDefault();
 		Session.set('group', event.target.id);
 		Template.instance().start.set(false);
 	}

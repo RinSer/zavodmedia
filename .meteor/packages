@@ -26,3 +26,5 @@ johanbrook:publication-collector  # Test a Meteor publication by collecting its 
 session@1.1.7
 aldeed:simple-schema
 aldeed:collection2
+email
+fortawesome:fontawesome

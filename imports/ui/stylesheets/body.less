@@ -15,17 +15,80 @@ a, a:hover, a:focus, a:active {
 }
 
 #content {
-	width: 50%;
+	@media screen {
+		@media (min-width: 1900px) {
+			width: 50%;
+		}
+		@media (min-width: 1600px) and (max-width: 1899px) {
+			width: 70%;
+		}
+		@media (min-width: 1400px) and (max-width: 1599px) {
+			width: 80%;
+		}
+		@media (min-width: 1200px) and (max-width: 1399px) {
+			width: 90%;
+		}
+		@media (max-width: 1199px) {
+			width: 100%;
+		}
+	}
 	margin: 6em auto 6em auto;
+	padding: 5px;
 }
 
 .col-sm-2 {
-	width: 50%;
-	float: left;
+	@media screen {
+		@media (min-width: 992px) {
+			width: 50%;
+			float: left;
+		}
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+}
+
+.col-3-4 {
+	@media screen {
+		@media (min-width: 992px) {
+			width: 75%;
+			float: left;
+		}
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+}
+
+.col-1-4 {
+	@media screen {
+		@media (min-width: 992px) {
+			width: 25%;
+			float: left;
+		}
+		@media (max-width: 991px) {
+			width: 100%;
+		}
+	}
+	text-align: center;
 }
 
 .clearfix {
 	clear: both;
+}
+
+#fotoContainer {
+	height: 100vh;
+	padding-top: 6em;
+	.fotoRow {
+		max-width: 100%;
+		text-align: justify;
+		margin: 0 auto 20px auto;
+		img {
+			margin: 0 1%;
+			vertical-align: middle;
+		}
+	}
 }
 
 footer {

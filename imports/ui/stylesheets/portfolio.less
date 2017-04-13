@@ -1,11 +1,18 @@
 #portfolio_body {
 	height: 100vh;
+	padding-top: 6em;
 	#portfolio_imgs {
-		margin: 0 auto;
-		padding-top: 6em;
-		width: 60%;
-		img {
-			margin:0 10px 0 10px;
+		@media screen {
+			@media (min-width: 992px) {
+				margin: 0 auto;
+				width: 60%;
+				img {
+					margin:0 10px 0 10px;
+				}
+			}
+			@media (max-width: 991px) {
+				display: none;
+			}
 		}
 	}
 	ul {
