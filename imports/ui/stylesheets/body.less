@@ -10,6 +10,10 @@ body {
 	color: #fff;
 }
 
+ul {
+	padding: 0;
+}
+
 a, a:hover, a:focus, a:active {
 	outline: 0;
 }
@@ -33,19 +37,23 @@ a, a:hover, a:focus, a:active {
 		}
 	}
 	margin: 6em auto 6em auto;
-	padding: 5px;
+	padding: 10px;
 }
 
 .col-sm-2 {
 	@media screen {
 		@media (min-width: 992px) {
-			width: 50%;
-			float: left;
+			.col-2;
 		}
 		@media (max-width: 991px) {
 			width: 100%;
 		}
 	}
+}
+
+.col-2 {
+	width: 50%;
+	float: left;
 }
 
 .col-3-4 {
@@ -82,7 +90,7 @@ a, a:hover, a:focus, a:active {
 	padding-top: 6em;
 	.fotoRow {
 		max-width: 100%;
-		text-align: justify;
+		text-align: center;
 		margin: 0 auto 20px auto;
 		img {
 			margin: 0 1%;

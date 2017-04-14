@@ -5,6 +5,7 @@
 			<img src="/img/camera.jpg" alt="camera" />
 			<img src="/img/action.jpg" alt="action" />
 		</div>
+		<div id="portfolio_menu">
 		<ul>
 			<li id="movies">КИНО</li>
 			<li id="ads">РЕКЛАМА</li>
@@ -14,6 +15,7 @@
 			<li id="creative">КРЕАТИВ</li>
 			<li id="aero">АЭРОСЪЕМКА</li>
 		</ul>
+		</div>
 		{{#if start}}
 			{{> portfolioStart}}
 		{{else}}
@@ -31,7 +33,7 @@
 			</div>
 			<div class="col-sm-2">
 				{{#each svideo in smallVideos}}
-					<div class="col-sm-2">
+					<div class="col-2">
 						<iframe width="320" height="180" src="{{svideo.url}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
 					</div>
 				{{/each}}
