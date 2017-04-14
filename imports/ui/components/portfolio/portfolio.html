@@ -16,6 +16,12 @@
 			<li id="aero">АЭРОСЪЕМКА</li>
 		</ul>
 		</div>
+		{{#if currentUser}}
+			<h3>Добавить видео&nbsp;<i class="fa fa-plus-square-o" aria-hidden="true"></i></h3>
+			<div id="addVideo">
+				{{> videoForm}}
+			</div>
+		{{/if}}
 		{{#if start}}
 			{{> portfolioStart}}
 		{{else}}
@@ -49,17 +55,46 @@
 	<section>
 		{{#if Template.subscriptionsReady}}
 			{{#each video in videos}}
-				<div class="video_container">
-					<div class="col-sm-2">
-						<iframe width="560" height="360" src="{{video.url}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
-					</div>
-					<div class="col-sm-2">
-						<p>{{video.title}}</p>
-					</div>
-				</div>
+				{{> portfolioGroupVideo video=video}}
 			{{/each}}
 		{{else}}
 			<h3>Loading</h3>
 		{{/if}}
 	</section>
+</template>
+
+
+<template name="portfolioGroupVideo">
+	<div class="video_container">
+		<div class="col-sm-2">
+			<iframe width="560" height="360" src="{{video.url}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
+		</div>
+		<div class="col-sm-2">
+			<p>{{video.title}}</p>
+		</div>
+	</div>
+	{{#if currentUser}}
+		<h4><span class="deleteVideo">Удалить</span></h4>
+	{{/if}}
+</template>
+
+
+<template name="videoForm">
+	<form id="newVideo">
+		<input type="url" placeholder="Введите URL видео" required="required" name="url"/>
+		<br>
+		<input type="text" placeholder="Введите описание видео" required="required" name="title"/>
+		<br>
+		<p>Выберите все подходящие группы:</p>
+		<p><input class="groups" type="checkbox" name="group" value="movies">КИНО</p>
+		<p><input class="groups" type="checkbox" name="group" value="ads">РЕКЛАМА</p>
+		<p><input class="groups" type="checkbox" name="group" value="tv">ТВ</p>
+		<p><input class="groups" type="checkbox" name="group" value="clips">КЛИПЫ</p>
+		<p><input class="groups" type="checkbox" name="group" value="backstages">БЭКСТЕЙДЖИ</p>
+		<p><input class="groups" type="checkbox" name="group" value="creative">КРЕАТИВ</p>
+		<p><input class="groups" type="checkbox" name="group" value="aero">АЭРОСЪЕМКА</p>
+		<p><input class="groups" type="checkbox" name="group" value="showreel">Showreel</p>
+		<br>
+		<input id="submitVideo" type="submit" value="Добавить"/>
+	</form>
 </template>

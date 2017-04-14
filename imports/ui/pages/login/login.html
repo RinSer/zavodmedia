@@ -1,0 +1,16 @@
+<template name="login_page">
+	<section id="login">
+		{{#if currentUser}}
+			<h2>Вы уже вошли как {{currentUser.username}}</h2>
+			<h3><a href="/">На главную</a></h3>
+		{{else}}
+			<form id="loginForm">
+				<input name="user" type="text" required="required" placeholder="Имя пользователя"/>
+				<br>
+				<input name="password" type="password" required="required" placeholder="Пароль"/>
+				<br>
+				<input id="submit" type="submit" value="Войти"/>
+			</form>
+		{{/if}}
+	</section>
+</template>

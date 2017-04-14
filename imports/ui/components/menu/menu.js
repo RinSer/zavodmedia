@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import './menu.html';
 
 
@@ -11,5 +12,12 @@ Template.menu.onRendered(function() {
 		$('#menu a').click(function() {
 			$('#menu ul').hide();
 		});
+	}
+});
+
+Template.menu.events({
+	'click #logout'(event, template) {
+		event.preventDefault();
+		Meteor.logout();
 	}
 });
