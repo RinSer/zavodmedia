@@ -16,12 +16,6 @@
 			<li id="aero">АЭРОСЪЕМКА</li>
 		</ul>
 		</div>
-		{{#if currentUser}}
-			<h3>Добавить видео&nbsp;<i class="fa fa-plus-square-o" aria-hidden="true"></i></h3>
-			<div id="addVideo">
-				{{> videoForm}}
-			</div>
-		{{/if}}
 		{{#if start}}
 			{{> portfolioStart}}
 		{{else}}
@@ -32,6 +26,12 @@
 
 
 <template name="portfolioStart">
+	{{#if currentUser}}
+		<h3>Добавить видео&nbsp;<i class="fa fa-plus-square-o" aria-hidden="true"></i></h3>
+		<div id="addVideo">
+			{{> videoForm}}
+		</div>
+	{{/if}}
 	<section>
 		{{#if Template.subscriptionsReady}}
 			<div class="col-sm-2">
@@ -66,15 +66,21 @@
 
 <template name="portfolioGroupVideo">
 	<div class="video_container">
+		{{#if showVideo}}
 		<div class="col-sm-2">
 			<iframe width="560" height="360" src="{{video.url}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
 		</div>
 		<div class="col-sm-2">
-			<p>{{video.title}}</p>
+			<p class="videoGroupTitle">{{video.title}}</p>
 		</div>
+		{{else}}
+		<div class="updateVideo">
+			{{> videoForm video=video}}
+		</div>
+		{{/if}}
 	</div>
 	{{#if currentUser}}
-		<h4><span class="deleteVideo">Удалить</span></h4>
+		<h4><span class="changeVideo">Редактировать</span>&nbsp;&nbsp;<span class="deleteVideo">Удалить</span></h4>
 	{{/if}}
 </template>
 
@@ -82,8 +88,14 @@
 <template name="videoForm">
 	<form id="newVideo">
 		<input type="url" placeholder="Введите URL видео" required="required" name="url"/>
+		{{#if error}}
+			<h2 class="error">Приложение пока что поддерживает добавление видео только с Ютуба!</h2>
+		{{/if}}
+		{{#if vid}}
+			<div id="vidPreview"></div>
+		{{/if}}
 		<br>
-		<input type="text" placeholder="Введите описание видео" required="required" name="title"/>
+		<textarea id="vidTitle" rows="10" placeholder="Введите описание видео" required="required" name="title"></textarea>
 		<br>
 		<p>Выберите все подходящие группы:</p>
 		<p><input class="groups" type="checkbox" name="group" value="movies">КИНО</p>
@@ -95,6 +107,10 @@
 		<p><input class="groups" type="checkbox" name="group" value="aero">АЭРОСЪЕМКА</p>
 		<p><input class="groups" type="checkbox" name="group" value="showreel">Showreel</p>
 		<br>
-		<input id="submitVideo" type="submit" value="Добавить"/>
+		{{#if update}}
+			<input id="updateVideo" type="submit" value="Изменить"/>
+		{{else}}
+			<input id="submitVideo" type="submit" value="Добавить"/>
+		{{/if}}
 	</form>
 </template>

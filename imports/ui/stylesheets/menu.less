@@ -64,16 +64,23 @@
 			font-size: 0.95em;
 		}
 	}
-	p {
+	#logOut {
 		text-align: right;
-		font-size: 0.75em;
-		padding: 0 1.2em;
-		margin: 0.2em;
+		font-size: 0.85em;
+		padding: 0.5em 1.2em;
+		margin: 0.5em;
+		display:none;
 		span {
+			text-decoration: underline;
 			&:hover {
 				cursor: pointer;
 				opacity: 0.5;
 			}
+		}
+	}
+	&:hover {
+		#logOut {
+			display: block;
 		}
 	}
 }

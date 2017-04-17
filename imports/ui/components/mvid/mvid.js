@@ -9,6 +9,6 @@ Template.mvid.onCreated(function() {
 
 Template.mvid.helpers({
 	mainVideo() {
-		return Videos.findOne().url;
+		return Videos.findOne().url+'?enablejsapi=1&rel=0&showinfo=0&autoplay=0';
 	},
 });

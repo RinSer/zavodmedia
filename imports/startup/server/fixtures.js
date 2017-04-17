@@ -17,7 +17,7 @@ Meteor.startup(() => {
     const data = [
       {
         title: 'Showreel',
-        url: 'http://zavodmedia.com/assets/show-f544c88ec3a3618d8c235825112d3493.mp4',
+        url: 'https://www.youtube.com/embed/m-9pXxWvlBY',
         groups: ['showreel'],
         createdAt: new Date(),
       },
