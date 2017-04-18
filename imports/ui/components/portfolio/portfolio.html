@@ -45,7 +45,7 @@
 				{{/each}}
 			</div>
 		{{else}}
-			<h3>Loading</h3>
+			{{> gears}}
 		{{/if}}
 	</section>
 </template>
@@ -58,7 +58,7 @@
 				{{> portfolioGroupVideo video=video}}
 			{{/each}}
 		{{else}}
-			<h3>Loading</h3>
+			{{> gears}}
 		{{/if}}
 	</section>
 </template>
@@ -98,14 +98,14 @@
 		<textarea id="vidTitle" rows="10" placeholder="Введите описание видео" required="required" name="title"></textarea>
 		<br>
 		<p>Выберите все подходящие группы:</p>
-		<p><input class="groups" type="checkbox" name="group" value="movies">КИНО</p>
-		<p><input class="groups" type="checkbox" name="group" value="ads">РЕКЛАМА</p>
-		<p><input class="groups" type="checkbox" name="group" value="tv">ТВ</p>
-		<p><input class="groups" type="checkbox" name="group" value="clips">КЛИПЫ</p>
-		<p><input class="groups" type="checkbox" name="group" value="backstages">БЭКСТЕЙДЖИ</p>
-		<p><input class="groups" type="checkbox" name="group" value="creative">КРЕАТИВ</p>
-		<p><input class="groups" type="checkbox" name="group" value="aero">АЭРОСЪЕМКА</p>
-		<p><input class="groups" type="checkbox" name="group" value="showreel">Showreel</p>
+		<p><input class="groups" type="checkbox" name="movies" value="movies">КИНО</p>
+		<p><input class="groups" type="checkbox" name="ads" value="ads">РЕКЛАМА</p>
+		<p><input class="groups" type="checkbox" name="tv" value="tv">ТВ</p>
+		<p><input class="groups" type="checkbox" name="clips" value="clips">КЛИПЫ</p>
+		<p><input class="groups" type="checkbox" name="backstages" value="backstages">БЭКСТЕЙДЖИ</p>
+		<p><input class="groups" type="checkbox" name="creative" value="creative">КРЕАТИВ</p>
+		<p><input class="groups" type="checkbox" name="aero" value="aero">АЭРОСЪЕМКА</p>
+		<p><input class="groups" type="checkbox" name="showreel" value="showreel">Showreel</p>
 		<br>
 		{{#if update}}
 			<input id="updateVideo" type="submit" value="Изменить"/>

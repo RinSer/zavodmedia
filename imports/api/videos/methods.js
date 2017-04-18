@@ -16,9 +16,5 @@ Meteor.methods({
 
 	'video.delete'(id) {
 		return Videos.remove({_id:id});
-	},
-
-	'video.update'(id, params) {
-		return Videos.update({_id:id},{$set:{params}});
 	}
 });

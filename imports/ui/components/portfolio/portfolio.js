@@ -3,6 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { Session } from 'meteor/session';
 import { Videos } from '/imports/api/videos/videos.js';
 import './portfolio.html';
+import '../loader/gears.html';
 
 // Main portfolio template
 Template.portfolio.onCreated(function() {
@@ -67,21 +68,23 @@ Template.videoForm.onCreated(function() {
 
 Template.videoForm.onRendered(function() {
 	var self = this;
-	// Update form if necessary
+	// Add video info to the form if necessary
 	if (this.data.video) {
 		this.update.set(true);
 		let urlEmbed = this.data.video.url;
 		let url = 'https://youtu.be/'+urlEmbed.replace(/^(.+)embed\//, '');
-		$('input[name="url"]').val(url);
-		$('input[name="url"]').trigger('blur');
-		console.log(this);
-		this.vid.set(true);
+		$('input[type=url]').val(url);
+		$('#vidTitle').val(this.data.video.title);
+		this.data.video.groups.forEach(function(group) {
+			$('input[name="'+group+'"]').prop('checked', true);
+		});
 	}
-	// Handle events
+	// Handle url input
 	$('input[type=url]').blur(function() {
 		self.error.set(false);
 		let url = $(this).val();
 		if (url.indexOf('youtu') > -1) {
+			self.error.set(false);
 			self.vid.set(true);
 			// Remove url params
 			if (url.indexOf('&') > -1) {
@@ -90,17 +93,16 @@ Template.videoForm.onRendered(function() {
 			// Extract video ID
 			let vid = url.replace(/^(.+)\.be\/|^(.+)\?v\=/i, '');
 			let jsonUrl = 'https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v='+vid+'&format=json'
-			console.log(jsonUrl);
 			// Get the JSON with video info
 			Meteor.call('youtube.get', jsonUrl, function(error, data) {
 				if (error) {
 					console.log(error);
 				}
-				console.log(data);
 				$('#vidTitle').append(data.data.title);
 				$('#vidPreview').html(data.data.html);
 			});
 		} else {
+			self.vid.set(false);
 			self.error.set(true);
 		}
 	});
@@ -139,14 +141,25 @@ Template.videoForm.events({
 		if (groups.length < 1) {
 			$('#newVideo').effect('shake');
 		} else {
-			Meteor.call('video.add', title, url, groups, function(error, result) {
-				if (error) {
-					$('#newVideo').effect('shake');
-				} else {
-					alert('Видео успешно добавлено!');
-					$('#addVideo').hide();
-				}
-			});
+			if (template.data.video) {
+				let id = template.data.video._id;
+				Meteor.call('video.delete', id);
+				Meteor.call('video.add', title, url, groups, function(error, result) {
+					if (error) {
+						$('#newVideo').effect('shake');
+						console.log(error);
+					}
+				});
+			} else {
+				Meteor.call('video.add', title, url, groups, function(error, result) {
+					if (error) {
+						$('#newVideo').effect('shake');
+					} else {
+						alert('Видео успешно добавлено!');
+						$('#addVideo').hide();
+					}
+				});
+			}
 		}
 	}
 });
@@ -166,7 +179,6 @@ Template.portfolioGroupVideo.events({
 	'click .deleteVideo'(event, template) {
 		event.preventDefault();
 		let video_id = template.data.video._id;
-		console.log(video_id);
 		Meteor.call('video.delete', video_id, function(error, result) {
 			if (error) {
 				alert('Что-то пошло не так!');
