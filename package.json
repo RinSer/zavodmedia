@@ -16,7 +16,7 @@
     "bcrypt": "^1.0.2",
     "ddp-rate-limiter": "1.0.7",
     "email": "1.2.0",
-    "fortawesome:fontawesome": "4.7.0",
+    "fortawesome-fontawesome": "4.7.0",
     "localstorage": "1.0.12",
     "mdg-validation-error": "0.2.0",
     "meteor-node-stubs": "~0.2.4",
