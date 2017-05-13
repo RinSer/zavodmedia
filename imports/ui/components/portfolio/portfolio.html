@@ -33,12 +33,12 @@
 	<section>
 		{{#if Template.subscriptionsReady}}
 			<div class="col-sm-2">
-					<iframe width="560" height="360" src="{{bigVideo}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
+					<iframe width="560" height="360" src="{{bigVideo}}?enablejsapi=1&rel=0&showinfo=0&autohid=1"></iframe>
 			</div>
 			<div class="col-sm-2">
 				{{#each svideo in smallVideos}}
 					<div class="col-2">
-						<iframe width="320" height="180" src="{{svideo.url}}?enablejsapi=1&rel=0&showinfo=0"></iframe>
+						<iframe width="320" height="180" src="{{svideo.url}}?enablejsapi=1&rel=0&showinfo=0&autohid=1"></iframe>
 					</div>
 				{{/each}}
 			</div>
